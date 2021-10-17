@@ -1,0 +1,262 @@
+﻿<Window x:Class="Automotive.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Automotive"
+        mc:Ignorable="d"
+        Title="Joe's Automotive" Height="900" Width="500">
+    <Window.Resources>
+        <Style x:Key="Background" TargetType="Image">
+            <Setter Property="Stretch" Value="UniformToFill"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Opacity" Value="0.2"/>
+        </Style>
+        <Style x:Key="Check" TargetType="CheckBox">
+            <Setter Property="Margin" Value="80 0 0 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="30 0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Hint" TargetType="Label">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Price" TargetType="Label">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="VerticalPanel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="UserInput" TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="HorizontalPanel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ResultHint" TargetType="Label">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        <Style x:Key="Result" TargetType="Label">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        <Style x:Key="BottomButton" TargetType="Button">
+            <Setter Property="Margin" Value="40, 0"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="CadetBlue"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="13" 
+               Source="Images\background.jpg"
+               Style="{StaticResource Background}">
+            <Image.Effect>
+                <BlurEffect Radius="10"/>
+            </Image.Effect>
+        </Image>
+
+        <Label Content="Routine Maintenance Services"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+               Style="{StaticResource Title}"/>
+
+        <CheckBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                  Style="{StaticResource Check}"
+                  IsChecked="{Binding HasOilChange}">
+            <WrapPanel>
+                <Label Content="Oil chanage - "
+                       Style="{StaticResource Hint}"/>
+                <Label Content="{Binding OilChangePrice}"
+                       ContentStringFormat="C"
+                       Style="{StaticResource Price}"/>
+            </WrapPanel>
+        </CheckBox>
+
+        <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                  Style="{StaticResource Check}"
+                  IsChecked="{Binding HasLubeJob}">
+            <WrapPanel>
+                <Label Content="Lube job - "
+                       Style="{StaticResource Hint}"/>
+                <Label Content="{Binding LubeJobPrice}"
+                       ContentStringFormat="C"
+                       Style="{StaticResource Price}"/>
+            </WrapPanel>
+        </CheckBox>
+
+        <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                  Style="{StaticResource Check}"
+                  IsChecked="{Binding HasRadiatorFlush}">
+            <WrapPanel>
+                <Label Content="Radiator flush - "
+                       Style="{StaticResource Hint}"/>
+                <Label Content="{Binding RadiatorFlushPrice}"
+                       ContentStringFormat="C"
+                       Style="{StaticResource Price}"/>
+            </WrapPanel>
+        </CheckBox>
+
+        <CheckBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                  Style="{StaticResource Check}"
+                  IsChecked="{Binding HasTransmissionFlush}">
+            <WrapPanel>
+                <Label Content="Transmission flush - "
+                       Style="{StaticResource Hint}"/>
+                <Label Content="{Binding TransmissionFlushPrice}"
+                       ContentStringFormat="C"
+                       Style="{StaticResource Price}"/>
+            </WrapPanel>
+        </CheckBox>
+
+        <CheckBox Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
+                  Style="{StaticResource Check}"
+                  IsChecked="{Binding HasInspection}">
+            <WrapPanel>
+                <Label Content="Inspection - "
+                       Style="{StaticResource Hint}"/>
+                <Label Content="{Binding InspectionPrice}"
+                       ContentStringFormat="C"
+                       Style="{StaticResource Price}"/>
+            </WrapPanel>
+        </CheckBox>
+
+        <CheckBox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                  Style="{StaticResource Check}"
+                  IsChecked="{Binding HasMufflerReplancement}">
+            <WrapPanel>
+                <Label Content="Muffler replacement - "
+                       Style="{StaticResource Hint}"/>
+                <Label Content="{Binding MufflerReplancementPrice}"
+                       ContentStringFormat="C"
+                       Style="{StaticResource Price}"/>
+            </WrapPanel>
+        </CheckBox>
+
+        <CheckBox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                  Style="{StaticResource Check}"
+                  IsChecked="{Binding HasTireRotation}">
+            <WrapPanel>
+                <Label Content="Tire rotation - "
+                       Style="{StaticResource Hint}"/>
+                <Label Content="{Binding TireRotationPrice}"
+                       ContentStringFormat="C"
+                       Style="{StaticResource Price}"/>
+            </WrapPanel>
+        </CheckBox>
+
+        <Label Content="Nonroutine Services"
+               Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
+               Style="{StaticResource Title}"/>
+
+        <Label Grid.Row="9" Grid.Column="0"
+                   Content="Parts" 
+                   Style="{StaticResource Hint}"/>
+        <StackPanel Grid.Row="9" Grid.Column="1"
+                    Style="{StaticResource HorizontalPanel}">
+            <TextBox Style="{StaticResource UserInput}"
+                     Text="{Binding PartsCharge}"></TextBox>
+            <Label Content="$"
+                   Style="{StaticResource Hint}">
+            </Label>
+        </StackPanel>
+
+        <StackPanel Grid.Row="10" Grid.Column="0"
+                    Style="{StaticResource HorizontalPanel}">
+            <Label Content="Labor" 
+                   Style="{StaticResource Hint}"/>
+            <Label Content="{Binding LaborPriceContent}"
+                   Style="{StaticResource Price}">
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Row="10" Grid.Column="1"
+                    Style="{StaticResource HorizontalPanel}">
+            <TextBox Text="{Binding LaborHours}"
+                     Style="{StaticResource UserInput}"></TextBox>
+            <Label Content="H"
+                   Style="{StaticResource Hint}">
+            </Label>
+        </StackPanel>
+
+        <Label Grid.Row="11" Grid.Column="0" 
+               Content="Tax(Parts Only):"
+               Style="{StaticResource ResultHint}">
+        </Label>
+
+        <Label Grid.Row="11" Grid.Column="1" 
+               Content="{Binding TaxValue}"
+               ContentStringFormat="C"
+               Style="{StaticResource Result}">
+        </Label>
+
+        <Label Grid.Row="12" Grid.Column="0" 
+               Content="Total:"
+               Style="{StaticResource ResultHint}">
+        </Label>
+
+        <Label Grid.Row="12" Grid.Column="1" 
+               Content="{Binding TotalValue}"
+               ContentStringFormat="C"
+               Style="{StaticResource Result}">
+        </Label>
+
+        <Button Grid.Row="13" Grid.Column="0"
+                Name="Calculate"
+                Content="Checkout"
+                Style="{StaticResource BottomButton}"
+                Click="Calculate_Click"/>
+        <Button Grid.Row="13" Grid.Column="1"
+                Name="Clear"
+                Content="Clear" 
+                Style="{StaticResource BottomButton}"
+                Click="Clear_Click"/>
+    </Grid>
+</Window>
